@@ -1,0 +1,1 @@
+export { calculateMicronutrition } from '../../Macronutritions/api/api';
