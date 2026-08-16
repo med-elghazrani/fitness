@@ -188,20 +188,20 @@ export default function RecommendationView() {
 
   return (
 
-    <div className="space-y-5 text-black">
+    <div className="space-y-6 text-slate-900">
 
-      <h1 className="text-2xl font-semibold">
+      <h1 className="text-2xl font-semibold text-slate-900">
         Recommendation
       </h1>
 
       {error && (
-        <div className="bg-red-100 border border-red-300 text-red-700 p-4 rounded">
+        <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-xl">
           {error}
         </div>
       )}
 
       {loading && (
-        <div className="bg-gray-100 p-3 rounded">
+        <div className="bg-white border border-slate-200 p-3 rounded-xl text-slate-500 shadow-sm">
           Loading...
         </div>
       )}
@@ -211,13 +211,13 @@ export default function RecommendationView() {
 
       {athlete && (
 
-        <div className="bg-white p-5 rounded shadow">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
 
-          <div className="text-lg font-semibold">
+          <div className="text-lg font-semibold text-slate-900">
             Selected athlete
           </div>
 
-          <div className="mt-2 text-blue-600 font-medium">
+          <div className="mt-2 text-slate-600 font-medium">
 
             #{athlete.id}
             {' — '}
@@ -233,20 +233,20 @@ export default function RecommendationView() {
 
       {athlete && (
 
-        <div className="bg-white p-5 rounded shadow space-y-4">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
 
-          <h2 className="text-xl font-semibold">
+          <h2 className="text-xl font-semibold text-slate-900">
             Next training session
           </h2>
 
-          <p className="text-gray-600">
+          <p className="text-sm text-slate-500">
             The recommendation automatic use the athlete goal, level, equipment, available time and training history
           </p>
 
-          <div className="flex gap-3 flex-wrap">
+          <div className="flex gap-3 flex-wrap pt-1">
 
             <button
-              className="bg-green-600 text-white px-5 py-2 rounded disabled:opacity-50"
+              className="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
               onClick={onRecommend}
               disabled={loading}
             >
@@ -258,7 +258,7 @@ export default function RecommendationView() {
             </button>
 
             <button
-              className="bg-purple-600 text-white px-5 py-2 rounded"
+              className="border border-slate-300 bg-white text-slate-700 px-5 py-2.5 rounded-lg font-medium hover:bg-slate-50 disabled:opacity-50 transition-colors"
               onClick={() =>
                 setShowCustomForm(!showCustomForm)
               }
@@ -277,14 +277,14 @@ export default function RecommendationView() {
           {showCustomForm && (
 
 
-  <div className="border rounded p-4 bg-gray-50 space-y-4">
+  <div className="border border-slate-200 rounded-xl p-4 bg-slate-50 space-y-4">
 
 
-    <h3 className="font-semibold text-lg">Custom recommendation</h3>
+    <h3 className="font-semibold text-lg text-slate-900">Custom recommendation</h3>
 
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      <select value={customGoal} onChange={(e) => setCustomGoal(e.target.value)} className="border rounded p-2 text-black">
+      <select value={customGoal} onChange={(e) => setCustomGoal(e.target.value)} className="border border-slate-300 rounded-lg px-3 py-2.5 text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         <option value="">-- Select goal --</option>
         <option value="ENDURANCE">Endurance</option>
         <option value="STRENGTH">Strength</option>
@@ -292,21 +292,21 @@ export default function RecommendationView() {
         <option value="WEIGHT_LOSS">Weight loss</option>
       </select>
 
-      <select value={customLevel} onChange={(e) => setCustomLevel(e.target.value)} className="border rounded p-2 text-black">
+      <select value={customLevel} onChange={(e) => setCustomLevel(e.target.value)} className="border border-slate-300 rounded-lg px-3 py-2.5 text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         <option value="">-- Select level --</option>
         <option value="BEGINNER">Beginner</option>
         <option value="INTERMEDIATE">Intermediate</option>
         <option value="ADVANCED">Advanced</option>
       </select>
 
-      <select value={customEquipment} onChange={(e) => setCustomEquipment(e.target.value)} className="border rounded p-2 text-black">
+      <select value={customEquipment} onChange={(e) => setCustomEquipment(e.target.value)} className="border border-slate-300 rounded-lg px-3 py-2.5 text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         <option value="">-- Select equipment --</option>
         <option value="HOME">Home</option>
         <option value="DUMBBELLS">Dumbbells</option>
         <option value="GYM">Gym</option>
       </select>
 
-      <select value={customAvailableMinutes} onChange={(e) => setCustomAvailableMinutes(e.target.value)} className="border rounded p-2 text-black">
+      <select value={customAvailableMinutes} onChange={(e) => setCustomAvailableMinutes(e.target.value)} className="border border-slate-300 rounded-lg px-3 py-2.5 text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100">
         <option value="">-- Select duration --</option>
         <option value="15">15 minutes</option>
         <option value="30">30 minutes</option>
@@ -319,7 +319,7 @@ export default function RecommendationView() {
     <button
       onClick={CustomRecommend}
       disabled={loading || !customGoal || !customLevel || !customEquipment || !customAvailableMinutes}
-      className="bg-purple-600 text-white px-5 py-2 rounded disabled:opacity-50"
+      className="bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
     >
       {loading ? 'Generating...' : 'Generate recommendation'}
     </button>
@@ -334,17 +334,17 @@ export default function RecommendationView() {
 
       {rec && (
 
-        <div className="bg-white p-5 rounded shadow space-y-4">
+        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
 
-          <h2 className="text-xl font-semibold">
+          <h2 className="text-xl font-semibold text-slate-900">
             Recommended training session
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
 
-            <div className="border rounded p-3">
+            <div className="border border-slate-200 rounded-lg p-3 bg-white">
 
-              <div className="font-semibold">
+              <div className="font-semibold text-slate-900">
                 Muscle group
               </div>
 
@@ -354,9 +354,9 @@ export default function RecommendationView() {
 
             </div>
 
-            <div className="border rounded p-3">
+            <div className="border border-slate-200 rounded-lg p-3 bg-white">
 
-              <div className="font-semibold">
+              <div className="font-semibold text-slate-900">
                 Intensity
               </div>
 
@@ -366,9 +366,9 @@ export default function RecommendationView() {
 
             </div>
 
-            <div className="border rounded p-3">
+            <div className="border border-slate-200 rounded-lg p-3 bg-white">
 
-              <div className="font-semibold">
+              <div className="font-semibold text-slate-900">
                 Duration
               </div>
 
@@ -382,7 +382,7 @@ export default function RecommendationView() {
 
           <div>
 
-            <h3 className="font-semibold text-lg mb-3">
+            <h3 className="font-semibold text-lg mb-3 text-slate-900">
               Recommended exercise
             </h3>
 
@@ -401,10 +401,10 @@ export default function RecommendationView() {
 
                   <div
                     key={exercise.id}
-                    className="border rounded p-3"
+                    className="border border-slate-200 rounded-lg p-3 bg-white"
                   >
 
-                    <div className="font-semibold">
+                    <div className="font-semibold text-slate-900">
                       {exercise.name}
                     </div>
 
@@ -455,11 +455,11 @@ export default function RecommendationView() {
 
               <div>
 
-                <h3 className="font-semibold text-lg mb-2">
+                <h3 className="font-semibold text-lg mb-2 text-slate-900">
                   Why this recommendation?
                 </h3>
 
-                <ul className="list-disc ml-6">
+                <ul className="list-disc ml-6 text-slate-600 space-y-1">
 
                   {rec.reasons.map(
                     (reason, index) => (
@@ -486,9 +486,9 @@ export default function RecommendationView() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-          <div className="bg-white p-5 rounded shadow">
+          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
 
-            <h2 className="font-semibold text-lg mb-3">
+            <h2 className="font-semibold text-lg mb-3 text-slate-900">
               Training session history
             </h2>
 
@@ -551,9 +551,9 @@ export default function RecommendationView() {
 
           
 
-          <div className="bg-white p-5 rounded shadow">
+          <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
 
-            <h2 className="font-semibold text-lg mb-3">
+            <h2 className="font-semibold text-lg mb-3 text-slate-900">
               Session exercises
             </h2>
 
@@ -577,10 +577,10 @@ export default function RecommendationView() {
 
                       <div
                         key={sessionExercise.id}
-                        className="border rounded p-3"
+                        className="border border-slate-200 rounded-lg p-3 bg-white"
                       >
 
-                        <div className="font-semibold">
+                        <div className="font-semibold text-slate-900">
 
                           {exercise
                             ? exercise.name

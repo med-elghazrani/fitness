@@ -218,31 +218,31 @@ export default function CaloriesView() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 text-slate-900">
 
       
 
       {message !== '' && (
-        <div className="bg-green-100 border p-4 rounded text-black">
+        <div className="bg-blue-50 border border-blue-200 p-4 rounded-xl text-blue-800">
           {message}
         </div>
       )}
 
       {error !== '' && (
-        <div className="bg-red-100 border p-4 rounded text-red-700">
+        <div className="bg-red-50 border border-red-200 p-4 rounded-xl text-red-700">
           {error}
         </div>
       )}
 
-      <div className="bg-white p-6 rounded shadow text-black">
+      <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
-        <h2 className="text-2xl font-semibold mb-5">
+        <h2 className="text-xl font-semibold mb-5 text-slate-900">
           Athlète
         </h2>
 
-        <div className="max-w-sm">
+        <div className="max-w-md">
 
-          <label className="block mb-2">
+          <label className="block mb-2 text-sm font-medium text-slate-700">
             Athlete ID
           </label>
 
@@ -251,24 +251,24 @@ export default function CaloriesView() {
             value={athleteId}
             onChange={(event) => setAthleteId(event.target.value)}
             onKeyDown={handleAthleteKeyDown}
-            className="border rounded p-2 w-full text-black"
+            className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             placeholder="Exemple : 1"
           />
 
-          <p className="text-gray-600 mb-4">
+          <p className="text-sm text-slate-500 mb-4 mt-1">
             Appuie sur Enter pour charger.
           </p>
 
           <button
             onClick={loadAthlete}
-            className="bg-blue-600 text-white px-4 py-2 rounded"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
           >
             Charger
           </button>
         </div>
 
         {athlete && (
-          <div className="mt-4 text-blue-600 font-medium">
+          <div className="mt-5 border-t border-slate-100 pt-4 text-slate-700 font-medium">
             Athlète: #{athlete.id} — {athlete.fullName}
             {' '}
             (Poids: {athlete.weightKg} kg)
@@ -278,15 +278,15 @@ export default function CaloriesView() {
       </div>
 
       {athlete && (
-        <div className="bg-white p-6 rounded shadow text-black">
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
-          <h2 className="text-2xl font-semibold mb-5">
+          <h2 className="text-xl font-semibold mb-5 text-slate-900">
             Séance
           </h2>
 
-          <div className="mb-6 max-w-xs">
+          <div className="mb-6 max-w-sm">
 
-            <label className="block mb-2">
+            <label className="block mb-2 text-sm font-medium text-slate-700">
               Date de séance
             </label>
 
@@ -296,26 +296,26 @@ export default function CaloriesView() {
               onChange={(event) =>
                 setSessionDate(event.target.value)
               }
-              className="border rounded p-2 w-full text-black"
+              className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
             />
 
           </div>
 
-          <h3 className="text-xl font-semibold mb-4">
+          <h3 className="text-base font-semibold mb-4 text-slate-800">
             Choisir Muscle → Exercice → Intensité → Durée
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
 
             <div>
-              <label className="block mb-2">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Muscle
               </label>
 
               <select
                 value={muscleGroup}
                 onChange={changeMuscleGroup}
-                className="border rounded p-2 w-full text-black"
+                className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               >
                 <option value="">
                   -- choisir muscle --
@@ -334,7 +334,7 @@ export default function CaloriesView() {
             </div>
 
             <div>
-              <label className="block mb-2">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Exercice
               </label>
 
@@ -344,7 +344,7 @@ export default function CaloriesView() {
                   setExerciseId(event.target.value)
                 }
                 disabled={muscleGroup === ''}
-                className="border rounded p-2 w-full text-black"
+                className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               >
                 <option value="">
                   -- choisir exercice --
@@ -363,7 +363,7 @@ export default function CaloriesView() {
             </div>
 
             <div>
-              <label className="block mb-2">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Intensité
               </label>
 
@@ -372,7 +372,7 @@ export default function CaloriesView() {
                 onChange={(event) =>
                   setIntensity(event.target.value)
                 }
-                className="border rounded p-2 w-full text-black"
+                className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               >
                 <option value="LOW">LOW</option>
                 <option value="MEDIUM">MEDIUM</option>
@@ -381,7 +381,7 @@ export default function CaloriesView() {
             </div>
 
             <div>
-              <label className="block mb-2">
+              <label className="block mb-2 text-sm font-medium text-slate-700">
                 Durée (minutes)
               </label>
 
@@ -392,7 +392,7 @@ export default function CaloriesView() {
                 onChange={(event) =>
                   setDuration(event.target.value)
                 }
-                className="border rounded p-2 w-full text-black"
+                className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               />
             </div>
 
@@ -401,45 +401,45 @@ export default function CaloriesView() {
           <button
             onClick={addExercise}
             disabled={exerciseId === ''}
-            className="bg-gray-700 text-white px-4 py-2 rounded disabled:bg-gray-400"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
           >
             Ajouter à la séance
           </button>
 
-          <h3 className="text-xl font-semibold mt-6 mb-4">
+          <h3 className="text-lg font-semibold mt-7 mb-4 text-slate-900">
             Exercices ajoutés
           </h3>
 
           {sessionExercises.length === 0 && (
-            <p className="text-gray-600">
+            <p className="text-sm text-slate-500">
               Aucun exercice ajouté.
             </p>
           )}
 
           {sessionExercises.length > 0 && (
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto rounded-lg border border-slate-200">
 
-              <table className="w-full border-collapse border">
+              <table className="w-full border-collapse text-sm">
 
                 <thead>
                   <tr>
-                    <th className="border p-3 text-left">
+                    <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                       Exercice
                     </th>
 
-                    <th className="border p-3 text-left">
+                    <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                       Muscle
                     </th>
 
-                    <th className="border p-3 text-left">
+                    <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                       Durée
                     </th>
 
-                    <th className="border p-3 text-left">
+                    <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                       Intensité
                     </th>
 
-                    <th className="border p-3">
+                    <th className="border-b border-slate-100 p-3 text-slate-700">
                     </th>
                   </tr>
                 </thead>
@@ -449,27 +449,27 @@ export default function CaloriesView() {
                   {sessionExercises.map((exercise, index) => (
                     <tr key={index}>
 
-                      <td className="border p-3">
+                      <td className="border-b border-slate-100 p-3 text-slate-700">
                         {exercise.name}
                       </td>
 
-                      <td className="border p-3">
+                      <td className="border-b border-slate-100 p-3 text-slate-700">
                         {exercise.muscleGroup}
                       </td>
 
-                      <td className="border p-3">
+                      <td className="border-b border-slate-100 p-3 text-slate-700">
                         {exercise.durationMinutes} min
                       </td>
 
-                      <td className="border p-3">
+                      <td className="border-b border-slate-100 p-3 text-slate-700">
                         {exercise.intensity}
                       </td>
 
-                      <td className="border p-3 text-center">
+                      <td className="border-b border-slate-100 p-3 text-center">
 
                         <button
                           onClick={() => removeExercise(index)}
-                          className="bg-red-600 text-white px-3 py-2 rounded"
+                          className="border border-slate-300 bg-white text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-red-600 transition-colors"
                         >
                           Supprimer
                         </button>
@@ -489,7 +489,7 @@ export default function CaloriesView() {
           <button
             onClick={calculateAndSave}
             disabled={sessionExercises.length === 0}
-            className="mt-5 bg-blue-600 text-white px-5 py-2 rounded disabled:bg-gray-400"
+            className="mt-5 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
           >
             Enregistrer la séance + Calculer calories brûlées
           </button>
@@ -498,43 +498,43 @@ export default function CaloriesView() {
       )}
 
       {result && (
-        <div className="bg-white p-6 rounded shadow text-black">
+        <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
-          <h2 className="text-2xl font-semibold mb-5">
+          <h2 className="text-xl font-semibold mb-5 text-slate-900">
             Résultat calories brûlées
           </h2>
 
-          <div className="text-blue-600 mb-4 font-medium">
+          <div className="text-slate-600 mb-4 font-medium">
             Séance #{result.sessionId}
             {' — '}
             Date: {result.sessionDate}
           </div>
 
-          <div className="mb-4">
+          <div className="mb-4 text-slate-600">
             Athlète: {result.athleteName}
             {' — '}
             Poids: {result.weightKg} kg
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-lg border border-slate-200">
 
-            <table className="w-full border-collapse border">
+            <table className="w-full border-collapse text-sm">
 
               <thead>
                 <tr>
-                  <th className="border p-3 text-left">
+                  <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                     Exercice
                   </th>
 
-                  <th className="border p-3 text-left">
+                  <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                     Durée
                   </th>
 
-                  <th className="border p-3 text-left">
+                  <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                     Intensité
                   </th>
 
-                  <th className="border p-3 text-left">
+                  <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
                     Calories
                   </th>
                 </tr>
@@ -545,19 +545,19 @@ export default function CaloriesView() {
                 {result.exercises.map((exercise, index) => (
                   <tr key={index}>
 
-                    <td className="border p-3">
+                    <td className="border-b border-slate-100 p-3 text-slate-700">
                       {exercise.name}
                     </td>
 
-                    <td className="border p-3">
+                    <td className="border-b border-slate-100 p-3 text-slate-700">
                       {exercise.durationMinutes} min
                     </td>
 
-                    <td className="border p-3">
+                    <td className="border-b border-slate-100 p-3 text-slate-700">
                       {exercise.intensity}
                     </td>
 
-                    <td className="border p-3">
+                    <td className="border-b border-slate-100 p-3 text-slate-700">
                       {exercise.calories} kcal
                     </td>
 
@@ -570,13 +570,13 @@ export default function CaloriesView() {
 
           </div>
 
-          <div className="mt-5 text-xl font-semibold">
+          <div className="mt-5 text-xl font-semibold text-slate-900">
             Total calories brûlées pendant cette séance :
             {' '}
             {result.totalCalories} kcal
           </div>
 
-          <div className="mt-2">
+          <div className="mt-2 text-slate-600">
             Durée totale : {result.totalDuration} minutes
           </div>
 
