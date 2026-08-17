@@ -48,7 +48,7 @@ export default function CaloriesView() {
 
       setMuscleGroups(data)
     } catch {
-      setError('Imposible de charger les groupes musculaire')
+      setError('Unable to load muscle groups')
     }
   }
 
@@ -58,7 +58,7 @@ export default function CaloriesView() {
     setResult(null)
 
     if (athleteId === '') {
-      setError('Saisir un ID athlete')
+      setError('Enter an athlete ID')
       return
     }
 
@@ -78,7 +78,7 @@ export default function CaloriesView() {
       localStorage.setItem('selectedAthleteId', String(data.id)) // memorisation 
     } catch {
       setAthlete(null)
-      setError('Athlete introuvable')
+      setError('Athlete not found')
     }
   }
 
@@ -107,7 +107,7 @@ export default function CaloriesView() {
 
       setExercises(data)
     } catch {
-      setError('Impossible de charger les exercices')
+      setError('Unable to load exercises')
     }
   }
 
@@ -117,12 +117,12 @@ export default function CaloriesView() {
     setResult(null)
 
     if (exerciseId === '') {
-      setError('Choisir un exercice')
+      setError('Select an exercise')
       return
     }
 
     if (Number(duration) <= 0) {
-      setError('La duree doit etre superieure a 0')
+      setError('Duration must be greater than 0')
       return
     }
 
@@ -163,12 +163,12 @@ export default function CaloriesView() {
     setMessage('')
 
     if (!athlete) {
-      setError('Charger un athlète')
+      setError('Load an athlete')
       return
     }
 
     if (sessionExercises.length === 0) {
-      setError('Ajouter au moins un exercice')
+      setError('Add at least one exercise')
       return
     }
 
@@ -198,13 +198,13 @@ export default function CaloriesView() {
       const data = await response.json()
 
       if (!response.ok) {
-        throw new Error(data.error || 'Erreur')
+        throw new Error(data.error || 'Error')
       }
 
       setResult(data)
 
       setMessage(
-        'Seance #' + data.sessionId + ' enregistree avec succes !'
+        'Session #' + data.sessionId + ' saved successfully!'
       )
     } catch (err) {
       setError(err.message)
@@ -237,7 +237,7 @@ export default function CaloriesView() {
       <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
         <h2 className="text-xl font-semibold mb-5 text-slate-900">
-          Athlète
+          Athlete
         </h2>
 
         <div className="max-w-md">
@@ -252,26 +252,26 @@ export default function CaloriesView() {
             onChange={(event) => setAthleteId(event.target.value)}
             onKeyDown={handleAthleteKeyDown}
             className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
-            placeholder="Exemple : 1"
+            placeholder="Example: 1"
           />
 
           <p className="text-sm text-slate-500 mb-4 mt-1">
-            Appuie sur Enter pour charger.
+            Press Enter to load.
           </p>
 
           <button
             onClick={loadAthlete}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
           >
-            Charger
+            Load
           </button>
         </div>
 
         {athlete && (
           <div className="mt-5 border-t border-slate-100 pt-4 text-slate-700 font-medium">
-            Athlète: #{athlete.id} — {athlete.fullName}
+            Athlete: #{athlete.id} — {athlete.fullName}
             {' '}
-            (Poids: {athlete.weightKg} kg)
+            (Weight: {athlete.weightKg} kg)
           </div>
         )}
 
@@ -281,13 +281,13 @@ export default function CaloriesView() {
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
           <h2 className="text-xl font-semibold mb-5 text-slate-900">
-            Séance
+            Session
           </h2>
 
           <div className="mb-6 max-w-sm">
 
             <label className="block mb-2 text-sm font-medium text-slate-700">
-              Date de séance
+              Session date
             </label>
 
             <input
@@ -302,7 +302,7 @@ export default function CaloriesView() {
           </div>
 
           <h3 className="text-base font-semibold mb-4 text-slate-800">
-            Choisir Muscle → Exercice → Intensité → Durée
+            Select Muscle → Exercise → Intensity → Duration
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-5">
@@ -318,7 +318,7 @@ export default function CaloriesView() {
                 className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               >
                 <option value="">
-                  -- choisir muscle --
+                  -- select muscle --
                 </option>
 
                 {muscleGroups.map((group) => (
@@ -335,7 +335,7 @@ export default function CaloriesView() {
 
             <div>
               <label className="block mb-2 text-sm font-medium text-slate-700">
-                Exercice
+                Exercise
               </label>
 
               <select
@@ -347,7 +347,7 @@ export default function CaloriesView() {
                 className="border border-slate-300 rounded-lg px-3 py-2.5 w-full text-slate-900 bg-white outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
               >
                 <option value="">
-                  -- choisir exercice --
+                  -- select exercise --
                 </option>
 
                 {exercises.map((exercise) => (
@@ -364,7 +364,7 @@ export default function CaloriesView() {
 
             <div>
               <label className="block mb-2 text-sm font-medium text-slate-700">
-                Intensité
+                Intensity
               </label>
 
               <select
@@ -382,7 +382,7 @@ export default function CaloriesView() {
 
             <div>
               <label className="block mb-2 text-sm font-medium text-slate-700">
-                Durée (minutes)
+                Duration (minutes)
               </label>
 
               <input
@@ -403,16 +403,16 @@ export default function CaloriesView() {
             disabled={exerciseId === ''}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
           >
-            Ajouter à la séance
+            Add to session
           </button>
 
           <h3 className="text-lg font-semibold mt-7 mb-4 text-slate-900">
-            Exercices ajoutés
+            Added exercises
           </h3>
 
           {sessionExercises.length === 0 && (
             <p className="text-sm text-slate-500">
-              Aucun exercice ajouté.
+              No exercises added.
             </p>
           )}
 
@@ -424,7 +424,7 @@ export default function CaloriesView() {
                 <thead>
                   <tr>
                     <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                      Exercice
+                      Exercise
                     </th>
 
                     <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
@@ -432,11 +432,11 @@ export default function CaloriesView() {
                     </th>
 
                     <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                      Durée
+                      Duration
                     </th>
 
                     <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                      Intensité
+                      Intensity
                     </th>
 
                     <th className="border-b border-slate-100 p-3 text-slate-700">
@@ -471,7 +471,7 @@ export default function CaloriesView() {
                           onClick={() => removeExercise(index)}
                           className="border border-slate-300 bg-white text-slate-600 px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-red-600 transition-colors"
                         >
-                          Supprimer
+                          Remove
                         </button>
 
                       </td>
@@ -491,7 +491,7 @@ export default function CaloriesView() {
             disabled={sessionExercises.length === 0}
             className="mt-5 bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed transition-colors"
           >
-            Enregistrer la séance + Calculer calories brûlées
+            Save session + Calculate calories burned
           </button>
 
         </div>
@@ -501,19 +501,19 @@ export default function CaloriesView() {
         <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm text-slate-900">
 
           <h2 className="text-xl font-semibold mb-5 text-slate-900">
-            Résultat calories brûlées
+            Calories burned result
           </h2>
 
           <div className="text-slate-600 mb-4 font-medium">
-            Séance #{result.sessionId}
+            Session #{result.sessionId}
             {' — '}
             Date: {result.sessionDate}
           </div>
 
           <div className="mb-4 text-slate-600">
-            Athlète: {result.athleteName}
+            Athlete: {result.athleteName}
             {' — '}
-            Poids: {result.weightKg} kg
+            Weight: {result.weightKg} kg
           </div>
 
           <div className="overflow-x-auto rounded-lg border border-slate-200">
@@ -523,15 +523,15 @@ export default function CaloriesView() {
               <thead>
                 <tr>
                   <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                    Exercice
+                    Exercise
                   </th>
 
                   <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                    Durée
+                    Duration
                   </th>
 
                   <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
-                    Intensité
+                    Intensity
                   </th>
 
                   <th className="border-b border-slate-200 bg-slate-50 p-3 text-left font-medium text-slate-700">
@@ -571,13 +571,13 @@ export default function CaloriesView() {
           </div>
 
           <div className="mt-5 text-xl font-semibold text-slate-900">
-            Total calories brûlées pendant cette séance :
+            Total calories burned during this session:
             {' '}
             {result.totalCalories} kcal
           </div>
 
           <div className="mt-2 text-slate-600">
-            Durée totale : {result.totalDuration} minutes
+            Total duration: {result.totalDuration} minutes
           </div>
 
         </div>
